@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Afrida 💗</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* Floating Hearts */
+.heart{
+  position:absolute;
+  font-size:20px;
+  animation:float 6s linear infinite;
+  opacity:0.8;
+}
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0.5);}
+  100%{transform:translateY(-10vh) scale(1.2);}
+}
+
+.container{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,0.25);
+  width:90%;
+  max-width:400px;
+  z-index:10;
+}
+
+h1{
+  color:#ff3f6c;
+  margin-bottom:15px;
+}
+
+p{
+  margin-bottom:20px;
+  font-size:18px;
+}
+
+.buttons{
+  position:relative;
+  height:130px;
+}
+
+button{
+  padding:12px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  position:absolute;
+  transition:0.3s;
+}
+
+#yes{
+  background:#ff3f6c;
+  color:white;
+  left:50%;
+  bottom:10px;
+  transform:translateX(-50%);
+}
+
+#no{
+  background:#ddd;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.love{
+  display:none;
+}
+
+.love img{
+  width:200px;
+  border-radius:15px;
+  margin:15px 0;
+}
+
+.heart-big{
+  font-size:45px;
+  animation:beat 1s infinite;
+}
+
+@keyframes beat{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.3);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Romantic Music -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7c65f3cc2b.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container" id="main">
+  <h1>Afrida 💗</h1>
+  <p>Will you be my Valentine?</p>
+
+  <div class="buttons">
+    <button id="yes">Yes 💖</button>
+    <button id="no">No 😝</button>
+  </div>
+</div>
+
+<div class="container love" id="love">
+  <h1>Yayyy Babe 💕</h1>
+  <p><b>You made my dream fulfill.</b></p>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGR1ZDltdmJ0OHBxMXlmdDZvMmx0NWl2ZGh5ZzN5ajV5eGtxN3V2ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3oriO0OEd9QIDdllqo/giphy.gif">
+  <p class="heart-big">💖💖💖</p>
+  <p>— Yours forever, <b>M. Siam</b></p>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const main = document.getElementById("main");
+const love = document.getElementById("love");
+
+let noCount = 0;
+
+function moveNo(){
+  noCount++;
+
+  if(noCount >= 3){
+    noBtn.style.display = "none";
+    return;
+  }
+
+  const range = 120;
+  const rect = noBtn.parentElement.getBoundingClientRect();
+
+  const x = Math.random()*range - range/2;
+  const y = Math.random()*range - range/2;
+
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+yesBtn.addEventListener("click",()=>{
+  main.style.display="none";
+  love.style.display="block";
+});
+
+/* Floating Hearts Generator */
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerText="💗";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(4+Math.random()*3)+"s";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),7000);
+},300);
+</script>
+
+</body>
+</html>
+
